@@ -40,7 +40,7 @@ class FurnitureInspector<C: Chair>: Inspector<C> {
     }
 }
 
-//: This code works
+//: This code works; <Chair> is assumed
 
 let inspector2 = FurnitureInspector()
 inspector2.getMaterials(Chair())

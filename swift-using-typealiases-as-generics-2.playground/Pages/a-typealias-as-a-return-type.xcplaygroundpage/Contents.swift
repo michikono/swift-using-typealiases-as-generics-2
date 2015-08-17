@@ -44,7 +44,7 @@ class FurnitureInspector<C: Furniture>: Inspector<Pet> {
 
 //: These will now work since the return type of `thing.mainMaterial()` is the same as `C.M`
 
-let inspector2 = FurnitureInspector<Chair>()
+let inspector2 = FurnitureInspector()
 inspector2.getMaterials(Chair())
 
 let inspector3 = FurnitureInspector<Lamp>()
