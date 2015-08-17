@@ -1,5 +1,5 @@
-//: Inheritance for Generics
-//: ========================
+//: A Typealias as a Return Type
+//: ============================
 
 //: [Previous](@previous)
 
@@ -32,25 +32,22 @@ class Lamp: Furniture {
 class Pet {}
 class Inspector<P> {}
 
-let inspector = Inspector<Any>()
+let inspector = Inspector<Pet>()
 
-class FurnitureInspector<C: Chair>: Inspector<Pet> {
-    func getMaterials(thing: C) -> Wood {
+//: Changing `C: Chair` => `C: Furniture`
+class FurnitureInspector<C: Furniture>: Inspector<Pet> {
+    //: Changing Wood => C.M
+    func getMaterials(thing: C) -> C.M {
         return thing.mainMaterial()
     }
 }
 
-//: This code works
+//: These will now work since the return type of `thing.mainMaterial()` is the same as `C.M`
 
-let inspector2 = FurnitureInspector()
+let inspector2 = FurnitureInspector<Chair>()
 inspector2.getMaterials(Chair())
 
-
-//: **This next code snippet will not compile**
-
-//: `getMaterials` expects `Wood` to return, but `Lamp.mainMaterial()` will return `Glass`
-
-let inspector3 = FurnitureInspector()
+let inspector3 = FurnitureInspector<Lamp>()
 inspector3.getMaterials(Lamp())
 
 //: [Next](@next)

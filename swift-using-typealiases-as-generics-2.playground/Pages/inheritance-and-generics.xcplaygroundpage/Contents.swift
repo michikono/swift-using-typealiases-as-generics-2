@@ -34,20 +34,23 @@ class Inspector<P> {}
 
 let inspector = Inspector<Pet>()
 
-//: Changing `C: Chair` => `C: Furniture`
-class FurnitureInspector<C: Furniture>: Inspector<Pet> {
-    //: Changing Wood => C.M
-    func getMaterials(thing: C) -> C.M {
+class FurnitureInspector<C: Chair>: Inspector<C> {
+    func getMaterials(thing: C) -> Wood {
         return thing.mainMaterial()
     }
 }
 
-//: These will now work since the return type of `thing.mainMaterial()` is the same as `C.M`
+//: This code works
 
-let inspector2 = FurnitureInspector<Chair>()
+let inspector2 = FurnitureInspector()
 inspector2.getMaterials(Chair())
 
-let inspector3 = FurnitureInspector<Lamp>()
+
+//: **This next code snippet will not compile**
+
+//: `getMaterials` expects `Wood` to return, but `Lamp.mainMaterial()` will return `Glass`
+
+let inspector3 = FurnitureInspector()
 inspector3.getMaterials(Lamp())
 
 //: [Next](@next)
