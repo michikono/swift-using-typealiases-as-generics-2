@@ -4,14 +4,16 @@
 //: [Previous](@previous)
 
 protocol Material {}
-class Wood: Material {}
-class Glass: Material {}
-class Metal: Material {}
-class Cotton: Material {}
+struct Wood: Material {}
+struct Glass: Material {}
+struct Metal: Material {}
+struct Cotton: Material {}
+
+//: Adding `init()`
 
 protocol HouseholdThing { }
 protocol Furniture: HouseholdThing {
-    init()
+    init() // <=====
     typealias M: Material
     typealias T: HouseholdThing
     func mainMaterial() -> M
@@ -19,7 +21,7 @@ protocol Furniture: HouseholdThing {
 }
 
 class Chair: Furniture {
-    required init() {}
+    required init() {} // <=====
 
     func mainMaterial() -> Wood {
         return Wood()
@@ -30,7 +32,7 @@ class Chair: Furniture {
 }
 
 class Lamp: Furniture {
-    required init() {}
+    required init() {} // <=====
 
     func mainMaterial() -> Glass {
         return Glass()
@@ -62,7 +64,7 @@ let lampMaker = FurnitureMaker<Lamp>()
 let lamp = lampMaker.make()
 lampMaker.material(lamp) // returns Glass
 
-//: Optimizing the code a little by creating a BetterChairMaker...
+//: Optimizing (readability) the code by creating a BetterChairMaker...
 
 class ChairMaker: FurnitureMaker<Chair> {}
 

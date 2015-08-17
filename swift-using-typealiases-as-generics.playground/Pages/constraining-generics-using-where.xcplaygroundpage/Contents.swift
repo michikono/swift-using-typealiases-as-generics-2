@@ -4,10 +4,10 @@
 //: [Previous](@previous)
 
 protocol Material {}
-class Wood: Material {}
-class Glass: Material {}
-class Metal: Material {}
-class Cotton: Material {}
+struct Wood: Material {}
+struct Glass: Material {}
+struct Metal: Material {}
+struct Cotton: Material {}
 
 protocol HouseholdThing { }
 protocol Furniture: HouseholdThing {
@@ -35,11 +35,13 @@ class FurnitureInspector<C: Furniture where C.A == Int> {
 
 let inspector1 = FurnitureInspector<Chair>()
 
-//: This now returns C.A (which is constrained to an Int)
+//: This now returns `C.A` (which is constrained to an `Int`)
 
 inspector1.calculateLabel(Chair())
 
-//: And this won't even compile because Lamp.label() is not an Int
+//: **This next code snippet will not compile**
+
+//: `Lamp.label()` is not an `Int`
 
 let inspector2 = FurnitureInspector<Lamp>()
 

@@ -6,8 +6,8 @@
 //: You can safely ignore the following code block -- nothing has changed from previous examples
 
 protocol Material {}
-class Wood: Material {}
-class Glass: Material {}
+struct Wood: Material {}
+struct Glass: Material {}
 
 protocol HouseholdThing { }
 protocol Furniture: HouseholdThing {
@@ -34,13 +34,15 @@ class Inspector<P> {}
 
 let inspector = Inspector<Pet>()
 
-//: Changing C: Chair => C: Furniture
+//: Changing `C: Chair` => `C: Furniture`
 class FurnitureInspector<C: Furniture>: Inspector<Pet> {
     //: Changing Wood => C.M
     func getMaterials(thing: C) -> C.M {
         return thing.mainMaterial()
     }
 }
+
+//: These will now work since the return type of `thing.mainMaterial()` is the same as `C.M`
 
 let inspector2 = FurnitureInspector<Chair>()
 inspector2.getMaterials(Chair())

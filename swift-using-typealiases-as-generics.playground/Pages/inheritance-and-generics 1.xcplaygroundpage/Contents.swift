@@ -6,8 +6,8 @@
 //: You can safely ignore the following code block -- nothing has changed from previous examples
 
 protocol Material {}
-class Wood: Material {}
-class Glass: Material {}
+struct Wood: Material {}
+struct Glass: Material {}
 
 protocol HouseholdThing { }
 protocol Furniture: HouseholdThing {
@@ -32,7 +32,7 @@ class Lamp: Furniture {
 class Pet {}
 class Inspector<P> {}
 
-let inspector = Inspector<Pet>()
+let inspector = Inspector<Any>()
 
 class FurnitureInspector<C: Chair>: Inspector<Pet> {
     func getMaterials(thing: C) -> Wood {
@@ -45,7 +45,10 @@ class FurnitureInspector<C: Chair>: Inspector<Pet> {
 let inspector2 = FurnitureInspector()
 inspector2.getMaterials(Chair())
 
-//: But the next line fails
+
+//: **This next code snippet will not compile**
+
+//: `getMaterials` expects `Wood` to return, but `Lamp.mainMaterial()` will return `Glass`
 
 let inspector3 = FurnitureInspector()
 inspector3.getMaterials(Lamp())

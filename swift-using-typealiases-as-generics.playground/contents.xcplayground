@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' requires-full-environment='true' display-mode='rendered'>
+<playground version='6.0' target-platform='ios' requires-full-environment='true' display-mode='raw'>
     <pages>
-        <page name='0-0-start'/>
-        <page name='1-0-inferred-typealiases'/>
-        <page name='1-1-inferred-typealiases'/>
-        <page name='1-2-inferred-typealiases'/>
-        <page name='2-0-typealiases-for-self'/>
-        <page name='2-1-typealiases-for-self'/>
-        <page name='3-0-inheritance-and-generics'/>
-        <page name='3-1-inheritance-and-generics'/>
-        <page name='4-0-constraining-generics-using-where'/>
-        <page name='5-0-implementing-patterns'/>
-        <page name='5-1-implementing-patterns'/>
+        <page name='start'/>
+        <page name='generic-crash-course 1'/>
+        <page name='generic-crash-course 2'/>
+        <page name='inferred-typealiases 1'/>
+        <page name='inferred-typealiases 2'/>
+        <page name='inferred-typealiases 3'/>
+        <page name='typealias-for-self 1'/>
+        <page name='typealias-for-self 2'/>
+        <page name='typealias-for-self 3'/>
+        <page name='inheritance-and-generics 1'/>
+        <page name='inheritance-and-generics 2'/>
+        <page name='constraining-generics-using-where'/>
+        <page name='implementing-patterns 1'/>
+        <page name='implementing-patterns 2'/>
     </pages>
 </playground>

@@ -4,10 +4,10 @@
 //: [Previous](@previous)
 
 protocol Material {}
-class Wood: Material {}
-class Glass: Material {}
-class Metal: Material {}
-class Cotton: Material {}
+struct Wood: Material {}
+struct Glass: Material {}
+struct Metal: Material {}
+struct Cotton: Material {}
 
 protocol HouseholdThing { }
 protocol Furniture: HouseholdThing {
@@ -35,7 +35,9 @@ class Lamp: Furniture {
     }
 }
 
-//: This won't work
+//: **This next code snippet will not compile**
+
+//: The protocol of `Furniture` does not have a public initializer
 
 class FurnitureMaker<C: Furniture> {
     func make() -> C {
